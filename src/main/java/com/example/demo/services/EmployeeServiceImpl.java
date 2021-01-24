@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
-    //@Autowired
+    @Autowired
     private EmployeeRepository repository;
 
     public EmployeeServiceImpl(EmployeeRepository repository) {
@@ -51,8 +51,19 @@ public class EmployeeServiceImpl implements EmployeeService {
         // Check the existence of the employee, throws ResponseStatusException (404)
         Employee employeeToUpdate = getEmployeeIfExists(e.getId());
 
-        employeeToUpdate.setName(e.getName());
-        employeeToUpdate.setSurname(e.getSurname());
+        if(e.getName() != null)
+            employeeToUpdate.setName(e.getName());
+        if(e.getSurname() != null)
+            employeeToUpdate.setSurname(e.getSurname());
+        if(e.getAge() != 0)
+            employeeToUpdate.setSurname(e.getSurname());
+        if(e.getSalary() != 0)
+            employeeToUpdate.setSalary(e.getSalary());
+        if(e.getWorkYears() != 0)
+            employeeToUpdate.setWorkYears(e.getWorkYears());
+        if(e.getTitle() != null)
+            employeeToUpdate.setTitle(e.getTitle());
+
         repository.save(employeeToUpdate);
         return true;
     }
@@ -62,7 +73,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         if (employeeDb.isEmpty()) {
             throw new ResponseStatusException(
                     HttpStatus.NOT_FOUND,
-                    "Could not find player with ID: " + employeeId
+                    "Could not find employee with ID: " + employeeId
             );
         }
         return employeeDb.get();

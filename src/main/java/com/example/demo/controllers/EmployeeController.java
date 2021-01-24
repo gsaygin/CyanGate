@@ -43,7 +43,7 @@ public class EmployeeController {
     @ApiResponses({
             @ApiResponse(code = 201, message = "OK")
     })
-    public void createRecord() {
+    public ResponseEntity<List<Employee>>  createRecord() {
         try
         {
             String filename = "/home/chopchop/Desktop/cyangate/CyanGate_Interview_Assignment/Sample_Employees.xlsx";
@@ -96,6 +96,7 @@ public class EmployeeController {
         {
             e.printStackTrace();
         }
+        return ResponseEntity.ok().body(employeeService.findAll());
     }
 
     @GetMapping("{id}")

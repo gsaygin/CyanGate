@@ -46,8 +46,9 @@ public class EmployeeController {
     public ResponseEntity<List<Employee>>  createRecord() {
         try
         {
-            String filename = "/home/chopchop/Desktop/cyangate/CyanGate_Interview_Assignment/Sample_Employees.xlsx";
-            FileInputStream file = new FileInputStream(new File(filename));
+            File projectRoot = new File(System.getProperty("user.dir"));
+            String filename = "Sample_Employees.xlsx";
+            FileInputStream file = new FileInputStream(new File(projectRoot, filename));
 
             XSSFWorkbook workbook = new XSSFWorkbook(file);
 

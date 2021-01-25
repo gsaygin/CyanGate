@@ -11,3 +11,7 @@ $ ./build.sh
 ```
 $ java -jar executables/demo-0.0.1-SNAPSHOT.jar
 ```
+
+## Manual
+
+You can use the sample Postman import file in /src/main/resources folder.

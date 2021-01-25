@@ -70,7 +70,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     private Employee getEmployeeIfExists(long employeeId) throws ResponseStatusException {
         Optional<Employee> employeeDb = repository.findById(employeeId);
-        if (employeeDb.isEmpty()) {
+        if (!employeeDb.isPresent()) {
             throw new ResponseStatusException(
                     HttpStatus.NOT_FOUND,
                     "Could not find employee with ID: " + employeeId

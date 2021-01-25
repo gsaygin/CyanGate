@@ -2,5 +2,5 @@
 
 mkdir -p executables
 
-./mvnw clean package
+mvn clean package
 cp target/demo-0.0.1-SNAPSHOT.jar ./executables
